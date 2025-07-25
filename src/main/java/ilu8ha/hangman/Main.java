@@ -9,7 +9,7 @@ public class Main {
         PrintUtils.printMainMenuNavigationMessage();
         try(Scanner scanner = new Scanner(System.in, Charset.forName("windows-1251"))){
             while (true){
-                String input = scanner.nextLine();
+                String input = scanner.nextLine().toLowerCase();
 //                System.out.println(input); //debug
 //                System.out.println((int)input.toCharArray()[0]); //debug
 
