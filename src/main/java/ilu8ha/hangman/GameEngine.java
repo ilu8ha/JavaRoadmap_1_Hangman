@@ -1,0 +1,36 @@
+package ilu8ha.hangman;
+
+import java.util.Scanner;
+
+public class GameEngine {
+    private static GameState gameState;
+    public static void startGame(Scanner scanner){
+        gameState = new GameState();
+        PrintUtils.printScreenDivideMessage();
+        PrintUtils.printRulesMessage();
+        PrintUtils.printCurrentStateMessage(gameState);
+        do {
+            String input = scanner.nextLine();
+            if(isInputValid(input)){
+                char c = input.toLowerCase().toCharArray()[0];
+                if(isInputUniq(c)){
+                    gameState.newInput(c);
+                    PrintUtils.printCurrentStateMessage(gameState);
+                    continue;
+                }
+            }
+                PrintUtils.printInvalidInputMessage();
+                PrintUtils.printGameNavigationMessage();
+        }
+        while (!gameState.isGameEnd());
+
+    }
+
+    private static boolean isInputValid(String input){
+        String regex = "^[А-Яа-яЁё]$";
+        return input.matches(regex);
+    }
+    private static boolean isInputUniq(Character c){
+        return !gameState.getInputs().contains(c);
+    }
+}
