@@ -26,8 +26,7 @@ public final class GameWordsPool {
             }
         }
         catch (Exception ex){
-            //TODO: moveThisToLogger
-            ex.printStackTrace();
+            System.out.println("Error: " + ex.getMessage());
             System.exit(1);
         }
     }

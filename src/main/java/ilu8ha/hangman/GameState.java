@@ -25,7 +25,7 @@ public class GameState {
             errorsCount++;
             isGameEnd = errorsCount >= 6;
         } else {
-            isGameWon = isGameEnd = isWordFullyRevealed();
+            isGameEnd = isGameWon = isWordFullyRevealed();
         }
     }
     private String getRandomTargetWord(){

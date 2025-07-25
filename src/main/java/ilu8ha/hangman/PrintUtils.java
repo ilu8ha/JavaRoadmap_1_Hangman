@@ -19,9 +19,7 @@ public class PrintUtils {
 
 
     public static void printScreenDivideMessage(){
-        System.out.println("                                                           ");
-        System.out.println("===========================================================");
-        System.out.println("                                                           ");
+        System.out.println("\n===========================================================\n");
     }
 
     public static void printInvalidInputMessage(){
@@ -29,16 +27,20 @@ public class PrintUtils {
     }
 
     public static void printRulesMessage(){
-        System.out.println("Вы пытаетесь угадать скрытое слово, предлагая по одной букве за ход.");
-        System.out.println("За каждую неверно угаданную букву часть виселицы рисуется.");
-        System.out.println("Если виселица нарисована полностью до того, как вы угадаете слово, вы проигрываете");
+        String msg =
+                """
+                Вы пытаетесь угадать скрытое слово, предлагая по одной букве за ход.
+                За каждую неверно угаданную букву часть виселицы рисуется.
+                Если виселица нарисована полностью до того, как вы угадаете слово, вы проигрываете.
+                """;
+        System.out.print(msg);
     }
 
     public static void printGameNavigationMessage(){
         System.out.println("Введите букву: ");
     }
 
-    public static void printCurrentStateMessage(GameState state){
+    public static void printCurrentGameStateMessage(GameState state){
         System.out.println("Ошибок: " + state.getErrorsCount());
         System.out.println(errorStages[state.getErrorsCount()]);
         if(state.isGameEnd()){
@@ -82,56 +84,69 @@ public class PrintUtils {
         return builder.toString().toUpperCase();
     }
     private static final String[] errorStages = { //это сделала нейронка.
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    " ---",
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |   O\n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    " ---",
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |   O\n" +
-                    "  |   |\n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    " ---",
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |   O\n" +
-                    "  |  /|\n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    " ---",
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |   O\n" +
-                    "  |  /|\\\n" +
-                    "  |    \n" +
-                    "  |    \n" +
-                    " ---",
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |   O\n" +
-                    "  |  /|\\\n" +
-                    "  |  /\n" +
-                    "  |    \n" +
-                    " ---",
-            "  +---+\n" +
-                    "  |   |\n" +
-                    "  |   O\n" +
-                    "  |  /|\\\n" +
-                    "  |  / \\\n" +
-                    "  |    \n" +
-                    " ---"
-    };
+            """
+  +---+
+  |   |
+  |   \s
+  |   \s
+  |   \s
+  |   \s
+ ---\
+            """,
+            """
+  +---+
+  |   |
+  |   O
+  |   \s
+  |   \s
+  |   \s
+ ---\
+            """,
+            """
+  +---+
+  |   |
+  |   O
+  |   |
+  |   \s
+  |   \s
+ ---\
+            """,
+            """
+  +---+
+  |   |
+  |   O
+  |  /|
+  |   \s
+  |   \s
+ ---\
+            """,
+            """
+  +---+
+  |   |
+  |   O
+  |  /|\\
+  |   \s
+  |   \s
+ ---\
+            """,
+            """
+  +---+
+  |   |
+  |   O
+  |  /|\\
+  |  /
+  |   \s
+ ---\
+            """,
+            """
+  +---+
+  |   |
+  |   O
+  |  /|\\
+  |  / \\
+  |   \s
+ ---\
+            """};
     private static String getWonTemplate(){
         return "Вы разгадали слово \"%s\", поздравляю!\n";
     }

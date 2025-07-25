@@ -8,14 +8,14 @@ public class GameEngine {
         gameState = new GameState();
         PrintUtils.printScreenDivideMessage();
         PrintUtils.printRulesMessage();
-        PrintUtils.printCurrentStateMessage(gameState);
+        PrintUtils.printCurrentGameStateMessage(gameState);
         do {
             String input = scanner.nextLine();
             if(isInputValid(input)){
                 char c = input.toLowerCase().toCharArray()[0];
-                if(isInputUniq(c)){
+                if(isInputUnique(c)){
                     gameState.newInput(c);
-                    PrintUtils.printCurrentStateMessage(gameState);
+                    PrintUtils.printCurrentGameStateMessage(gameState);
                     continue;
                 }
             }
@@ -30,7 +30,7 @@ public class GameEngine {
         String regex = "^[А-Яа-яЁё]$";
         return input.matches(regex);
     }
-    private static boolean isInputUniq(Character c){
+    private static boolean isInputUnique(Character c){
         return !gameState.getInputs().contains(c);
     }
 }
