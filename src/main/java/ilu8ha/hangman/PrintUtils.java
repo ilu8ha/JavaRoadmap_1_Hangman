@@ -56,11 +56,11 @@ public class PrintUtils {
         }
     }
 
-    private static String getStyledWord(String word, HashSet<Character> reviledChar){
+    private static String getStyledWord(String word, HashSet<Character> revealedChar){
         StringBuilder builder = new StringBuilder();
         String placeholder = "_";
         for (Character c : word.toCharArray()){
-            if(reviledChar.contains(c)){
+            if(revealedChar.contains(c)){
                 builder.append(c);
             } else {
                 builder.append(placeholder);

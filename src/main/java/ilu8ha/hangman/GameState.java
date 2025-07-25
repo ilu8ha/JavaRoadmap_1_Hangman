@@ -23,9 +23,7 @@ public class GameState {
         inputs.add(character);
         if(targetWord.indexOf(character) == -1){
             errorsCount++;
-            if(errorsCount >= 6){
-                isGameEnd = true;
-            }
+            isGameEnd = errorsCount >= 6;
         } else {
             isGameWon = isGameEnd = isWordFullyRevealed();
         }
